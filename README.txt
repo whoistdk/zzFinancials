@@ -3,6 +3,17 @@ Welcome to project zzFinancials,
 The purpose of this project is to create an easy to use (budget) registration system, 
 with powerfull options for filtering and displaying transactions, managing and future planning.
 
+
+------Features------
+* Custom flexible threaded database engine with search, filter and sort query functions.
+* Custom rendered overview capable of handling a milion+ items per logbook at fast speeds.
+* System for drawing custom rendered graphs of various types of data.
+* Custom rendered tree menu.
+* Smooth dark gray interface with customized icons and some icons currently from:
+      FamFamFam Silk Icons Pack,
+      Glympish Icons Pack,
+      TWG Retina Icons Pack.
+      
 ------Idea's------
 
 * A system for planning financial transactions
@@ -27,7 +38,8 @@ with powerfull options for filtering and displaying transactions, managing and f
 
 #Debugging:
 * Deeper resouce debugging (Mem/CPU).
-* Bug: Columns resize on reordering.
+* Columns resize on reordering.
+* Scrolwheel failt due to control focus.
 
 ------Disclaimer------ 
 * Project name may change on any time.
