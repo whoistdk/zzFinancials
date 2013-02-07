@@ -100,6 +100,8 @@ Public Class AppKernell
 
     Public Sub Updates()
         ' MsgQue.Update()
+        ' A code change
+        MsgBox("lol")
     End Sub
 
     Public Function Rebuild_LocalTree() As String
@@ -119,7 +121,7 @@ Public Class AppKernell
             .AppendLine("Data Generator|tool:datagen||root/actions/tools|action")
             .AppendLine("Memory Graph|tool:memgraph||root/actions/tools|action")
 
-
+22:
             .AppendLine("LogBooks|logbooks||root|databasec")
             LogBooks = Enlist_Logbooks(pthBase, ".lbk")
             For Each LB As String In LogBooks
