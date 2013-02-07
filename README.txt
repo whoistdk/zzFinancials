@@ -5,10 +5,14 @@ with powerfull options for filtering and displaying transactions, managing and f
 
 
 ------Features------
+
 * Custom flexible threaded database engine with search, filter and sort query functions.
 * Custom rendered overview capable of handling a milion+ items per logbook at fast speeds.
 * System for drawing custom rendered graphs of various types of data.
 * Custom rendered tree menu.
+* Makes use of zzDynamix for animations. Custom designed system for (dynamic) movement of virtually
+      any object that can be moved. Currently intergated in the user interface, graph and various animations.
+* Single graphical user interface design principle, but 
 * Smooth dark gray interface with customized icons and some icons currently from:
       FamFamFam Silk Icons Pack,
       Glympish Icons Pack,
@@ -42,13 +46,14 @@ with powerfull options for filtering and displaying transactions, managing and f
 * Scrolwheel failt due to control focus.
 
 ------Disclaimer------ 
+
 * Project name may change on any time.
 * I am not responsible for any damage or prosparity this program may cause to your computer.
 * I am not responsible for any damage or prosparity this program may cause to your self.
 * Please copy and use and study any code available, but credit where credit is due.
 
-
 ------Greetings------ 
+
 To all I know and might know in the future ;)
 
                Greetz TDK
