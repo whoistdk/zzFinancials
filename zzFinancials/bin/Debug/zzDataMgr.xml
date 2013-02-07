@@ -1,0 +1,48 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+zzDataMgr
+</name>
+</assembly>
+<members>
+<member name="P:zzDataMgr.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:zzDataMgr.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:zzDataMgr.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:zzDataMgr.DataManager.TryParse(System.String@)">
+	<summary>
+ Initialize the data fields. Example Format: "#ColumnName1|ValueType1|ColumnName2|ValueType2"
+ </summary>
+</member><member name="M:zzDataMgr.DataManager.FromFile(System.String)">
+	<summary>
+ Loads data from a specified file in a separate thread.
+ </summary>
+</member><member name="M:zzDataMgr.DataManager.ToFile(System.String)">
+	<summary>
+ Saves data to a specified file in a separate thread.
+ </summary>
+</member><member name="M:zzDataMgr.DataManager.Fields2Cmb(System.Windows.Forms.ComboBox@)">
+	<summary>
+ Populates a combobox with the Names of the datacolumns.
+ </summary>
+</member><member name="M:zzDataMgr.DataManager.FindFieldIndex(System.String@)">
+	<summary>
+ Populates a combobox with the Names of the datacolumns.
+ </summary>
+</member><member name="M:zzDataMgr.DataManager.ExecQuery(System.String)">
+	<summary>
+ Saves data to a specified file in a separate thread.
+ </summary>
+</member>
+</members>
+</doc>

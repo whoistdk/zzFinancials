@@ -1,0 +1,144 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+zzFinancials
+</name>
+</assembly>
+<members>
+<member name="P:zzFinancials.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources._14_tag">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources._172_pricetag">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources._33_cabinet">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources._78_stopwatch">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources._83_calendar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.BarBG">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.cd_dark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.cd_darker">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.database">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.database_dark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.database_darker">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.database_green">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.euro">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.euro_dark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.euro_green">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.filter_darker">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.filter_green">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.filterA">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.folder_darkergray">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.folderframe">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.folderframehl">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.lightning_dark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.lightning_darkergray">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.lightning_darkgray">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.money_24">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:zzFinancials.My.Resources.Resources.money_24_Dark">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:zzFinancials.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:zzFinancials.SysMain.Main">
+	<summary>
+ Application entrypoint
+ </summary>
+</member><member name="T:zzFinancials.SysMain">
+	<summary>
+ System's core.
+ </summary>
+</member><member name="T:zzFinancials.AppKernell">
+	<summary>
+ System's core application manager.
+ </summary>
+</member><member name="T:zzFinancials.SysShared">
+	<summary>
+ System's Shared Functions and resources.
+ </summary>
+</member>
+</members>
+</doc>

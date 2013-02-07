@@ -1,0 +1,52 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+zLib_DynVar
+</name>
+</assembly>
+<members>
+<member name="M:zLib_DynVar.DV_Mgr.DVS(System.String,System.String,System.String)">
+	<summary>
+ Sets a dynamic variable.
+ </summary>
+</member><member name="M:zLib_DynVar.DV_Mgr.NodeExist(System.String)">
+	<summary>
+ Checks if a Node exists.
+ </summary>
+</member><member name="M:zLib_DynVar.DV_Mgr.FindNode(System.String)">
+	<summary>
+ Finds and returns a node by its key.
+ </summary>
+</member><member name="M:zLib_DynVar.DV_Mgr.FindNodeR(System.String[],zLib_DynVar.DV_Node,System.Int32)">
+	<summary>
+ Finds and returns a node by its key. (RECURSIVE)
+ </summary>
+</member><member name="M:zLib_DynVar.DV_Mgr.MkNodeR(System.String[],zLib_DynVar.DV_Node,System.Int32)">
+	<summary>
+ Creates a node by a key. (RECURSIVE)
+ </summary>
+</member><member name="M:zLib_DynVar.DV_Mgr.MkKeyA(System.String)">
+	<summary>
+ Creates a lowercase string array from a key string.
+ </summary>
+</member><member name="M:zLib_DynVar.DV_Mgr.MkPath(System.String[],System.Int32)">
+	<summary>
+ Recreates a keystring from key string array, optionally to the required level.
+ </summary>
+</member><member name="P:zLib_DynVar.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:zLib_DynVar.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:zLib_DynVar.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

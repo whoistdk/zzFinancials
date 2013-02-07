@@ -1,0 +1,11 @@
+﻿
+  Available Data Columns.
+         \
+	 Select the required Data Columns.
+	       \
+	    Filter each column if required, and compile the results.
+	         \
+		  Sort all the data per column in a specified column order.
+		      \
+		    Display the results.
+

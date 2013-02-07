@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+zzDynamix
+</name>
+</assembly>
+<members>
+<member name="M:zzDynamix.SuperClasses.dynObject.HasChanged">
+	<summary>
+ Returns true if changes have occured to any of the dynamic components.
+ </summary>
+</member><member name="M:zzDynamix.SuperClasses.dynObject.IsBuisy">
+	<summary>
+ Returns true if the dynamic components are changing.
+ </summary>
+</member><member name="M:zzDynamix.SuperClasses.dynObject.FinalColor">
+	<summary>
+ Returns the final color, dynamic alpha and dynamic color
+ </summary>
+</member><member name="P:zzDynamix.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:zzDynamix.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:zzDynamix.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>
