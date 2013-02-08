@@ -35,8 +35,17 @@ End Module
 Public Class AppKernell
     Public guiDataview As wDataview
 
+    Public ActiveLogbook As String = ""
     Public WithEvents DM As zzDataMgr.DataManager
+    Public Const DM_Header As String = "#created|datetime|mutationdate|date|amount|currency|description|text|label|text"
+    'Public Const DM_Header2 As String = "#timestamp|time|amount|currency|description|text|label|text"
+
     Public WithEvents DMCAT As zzDataMgr.DataManager
+    Public Const DMCAT_Header As String = "#name|text|color|text"
+
+    Public WithEvents DMLOG As zzDataMgr.DataManager
+    Public Const DMLOG_Header As String = "#created|datetime|message|text|type|text"
+    Public bExceptionState As Boolean = False
 
     Public DP As DataPresenter
     Public LBM As LogBookMgr
@@ -49,10 +58,14 @@ Public Class AppKernell
     Public pthBaseAcc As String = ""
     Public AccountName As String = "Dev"
 
-    Public Const DM_Header As String = "#created|datetime|mutationdate|date|amount|currency|description|text|label|text"
-    Public Const DM_Header2 As String = "#timestamp|time|amount|currency|description|text|label|text"
-    Public Const DMCAT_Header As String = "#name|text|color|text"
+    Public Function AddLog(sMsg As String)
+        DMLOG.TryParse(Now.ToShortDateString & " " & Now.ToShortTimeString & "|" & sMsg & "|informative")
+    End Function
 
+    Public Function AddLog(Ex As Exception)
+        DMLOG.TryParse(Now.ToShortDateString & " " & Now.ToShortTimeString & "|" & Ex.ToString & "|exception")
+        bExceptionState = True
+    End Function
 
     Public Function GetSet(Path As String, Key As String, DefaultValue As String) As String
         Return GetSetting("zzFinancials", Path, Key, DefaultValue)
@@ -67,26 +80,19 @@ Public Class AppKernell
             'dbMain.InitTest()
             pthBase = Application.StartupPath & "\"
 
-            'Catagories = New CatagoryMgr
-            'Catagories.FromFile()
-
-            'DV = New DV_Mgr
-            'DV.
+            DMLOG = New zzDataMgr.DataManager
+            DMLOG.TryParse(DMLOG_Header)
 
             DMCAT = New zzDataMgr.DataManager
             DMCAT.TryParse(DMCAT_Header)
 
-
             DM = New zzDataMgr.DataManager
             DM.TryParse(DM_Header)
-
 
             DP = New DataPresenter
             DP.LinkDM(DM)
             DP.SetRGN(New Rectangle(0, 100, 600, 300))
             '600, 400
-
-
             LBM = New LogBookMgr
 
             'SF = New zzSuperForms
@@ -101,7 +107,7 @@ Public Class AppKernell
     Public Sub Updates()
         ' MsgQue.Update()
         ' A code change
-        MsgBox("lol")
+        ' MsgBox("lol")
     End Sub
 
     Public Function Rebuild_LocalTree() As String
@@ -120,8 +126,8 @@ Public Class AppKernell
             .AppendLine("Developer Tools|tools||root/actions|actionc")
             .AppendLine("Data Generator|tool:datagen||root/actions/tools|action")
             .AppendLine("Memory Graph|tool:memgraph||root/actions/tools|action")
+            .AppendLine("Test Data Graph|tool:TestGraphData||root/actions/tools|action")
 
-22:
             .AppendLine("LogBooks|logbooks||root|databasec")
             LogBooks = Enlist_Logbooks(pthBase, ".lbk")
             For Each LB As String In LogBooks
@@ -158,6 +164,38 @@ Public Class AppKernell
 
         Return treeScript.ToString
     End Function
+
+
+    Public Sub ResultsToGraph()
+        Try
+            Dim total As Integer = 0
+            For rp = 0 To DP.Results.Count - 1
+                For r = 0 To DP.Results(rp).Results.Count - 1
+                    total += 1
+                Next
+            Next
+
+            If total > 100 Then
+                Dim hop As Integer = total / 100
+                For rp = 0 To DP.Results.Count - 1
+                    For r = 0 To DP.Results(rp).Results.Count - 1 Step hop
+                        guiDataview.CustGraph.AddNode(0, DP.Results(rp).Results(r).Data(2))
+                    Next
+                Next
+            Else
+                For rp = 0 To DP.Results.Count - 1
+                    For r = 0 To DP.Results(rp).Results.Count - 1
+                        guiDataview.CustGraph.AddNode(0, DP.Results(rp).Results(r).Data(2))
+                    Next
+                Next
+            End If
+
+
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString)
+        End Try
+    End Sub
+
 
     Public Sub InitAcc(ByVal nwAccountName As String)
         AccountName = nwAccountName
@@ -253,11 +291,27 @@ End Class
 ''' </summary>
 Public Module SysShared
 
+
+
+
 #Region "Graphics and math Stuff"
     Public Rnd As New Random
     Public sysfnt As New Font("Microsoft Sans Serif", 10, FontStyle.Regular, GraphicsUnit.Pixel)
     Public sysfntbrs As New SolidBrush(Color.FromArgb(0, 0, 0)) 'Shadowbrush for function DrawText
     Public Const RAD As Double = Math.PI / 180                   'Radians multiplier
+
+    Private cData() As String = {"a", "b", "c", "d", "e", "f", "g", _
+                                 "h", "i", "j", "k", "l", "m", "n", "o", "p", _
+                                 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "}
+
+    Public Function RndName(ByVal MinSize As Integer, ByVal MaxSize As Integer) As String
+        Dim nxLen As Integer = MinSize + (rnd.Next(1, MaxSize - MinSize))
+        Dim sb As New System.Text.StringBuilder
+        For c = 1 To nxLen
+            sb.Append(cData(rnd.Next(0, UBound(cData))))
+        Next
+        Return sb.ToString
+    End Function
 
     'Public Sub DrawText(ByRef G As Graphics, ByVal Text As String, ByRef Fnt As Font, ByRef Br As SolidBrush, ByVal Align As StringAlignment, ByVal LineAlign As StringAlignment, ByVal Rgn As Rectangle, Optional ByVal UseShadow As Boolean = True)
     '    Try
@@ -274,14 +328,22 @@ Public Module SysShared
     '    End Try
     'End Sub
 
-    Public Sub DrawText(ByRef G As Graphics, ByVal Text As String, ByRef Fnt As Font, ByRef Br As SolidBrush, ByVal Align As StringAlignment, ByVal LineAlign As StringAlignment, ByVal Rgn As RectangleF, Optional ByVal UseShadow As Boolean = True)
+    Public Sub DrawText(ByRef G As Graphics, ByVal Text As String, ByRef Fnt As Font, ByRef Br As SolidBrush, ByVal AlignHorizontal As StringAlignment, ByVal AlignVertical As StringAlignment, ByVal Rgn As RectangleF, Optional ByVal UseShadow As Boolean = True)
         Try
-            Dim sf As New StringFormat
-            sf.Alignment = Align
-            sf.LineAlignment = LineAlign
             If Rgn.Width <> 0 And Rgn.Height <> 0 Then
-                If UseShadow Then G.DrawString(Text, Fnt, sysfntbrs, New Rectangle(Rgn.X + 1, Rgn.Y + 1, Rgn.Width, Rgn.Height), sf)
-                G.DrawString(Text, Fnt, Br, Rgn, sf)
+                Using sf As New StringFormat
+                    sf.Alignment = AlignHorizontal
+                    sf.LineAlignment = AlignVertical
+                    If UseShadow Then
+                        Dim trgAlpha As Single = Br.Color.A
+                        trgAlpha -= 128
+                        If trgAlpha < 0 Then trgAlpha = 0
+                        Using SBR As New SolidBrush(Color.FromArgb(trgAlpha, 0, 0, 0))
+                            G.DrawString(Text, Fnt, SBR, New Rectangle(Rgn.X + 1, Rgn.Y + 1, Rgn.Width, Rgn.Height), sf)
+                        End Using
+                    End If
+                    G.DrawString(Text, Fnt, Br, Rgn, sf)
+                End Using
             End If
         Catch ex As Exception
             Console.WriteLine(ex.ToString)

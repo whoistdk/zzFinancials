@@ -392,13 +392,13 @@
                                         Case "currency"
                                             Dim iTest As Single = Results(c).Results(x).Data(v)
                                             If iTest < 0 Then
-                                                DrawText(G, prefix & Format(iTest, "0.00"), sysfnt, brDataNeg, StringAlignment.Far, StringAlignment.Center, nxR, False)
+                                                DrawText(G, prefix & Format(iTest, "0.00"), sysfnt, brDataNeg, StringAlignment.Far, StringAlignment.Center, nxR, True)
                                             Else
-                                                DrawText(G, prefix & Format(iTest, "0.00"), sysfnt, brDataPos, StringAlignment.Far, StringAlignment.Center, nxR, False)
+                                                DrawText(G, prefix & Format(iTest, "0.00"), sysfnt, brDataPos, StringAlignment.Far, StringAlignment.Center, nxR, True)
                                             End If
 
                                         Case Else
-                                            DrawText(G, Results(c).Results(x).Data(v), sysfnt, brData, StringAlignment.Near, StringAlignment.Center, nxR, False)
+                                            DrawText(G, Results(c).Results(x).Data(v), sysfnt, brData, StringAlignment.Near, StringAlignment.Center, nxR, True)
                                     End Select
 
                                     'End If
@@ -469,10 +469,10 @@
                     End If
 
                     If SortField = lColumns(c).Title Then
-                        DrawText(G, lColumns(c).Title & " *", sysfnt, clmfntbr, StringAlignment.Center, StringAlignment.Center, lColumns(c).Rgn, False)
+                        DrawText(G, lColumns(c).Title & " *", sysfnt, clmfntbr, StringAlignment.Center, StringAlignment.Center, lColumns(c).Rgn, True)
 
                     Else
-                        DrawText(G, lColumns(c).Title, sysfnt, clmfntbr, StringAlignment.Center, StringAlignment.Center, lColumns(c).Rgn, False)
+                        DrawText(G, lColumns(c).Title, sysfnt, clmfntbr, StringAlignment.Center, StringAlignment.Center, lColumns(c).Rgn, True)
                     End If
 
                 End If

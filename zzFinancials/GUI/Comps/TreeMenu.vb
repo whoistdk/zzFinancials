@@ -14,6 +14,11 @@
     Private pCam As Point
     Private pLastCam As Point
 
+    Private ErrStateAlpha As New zzDynamix.CoreClasses.dynSingle
+    Private bErrState As Boolean
+
+    Public sMorph As New StringMorpher
+
     Public Sub New(nwRootText As String)
         R = New TreeMenuItem
         With R
@@ -43,9 +48,33 @@
         ilIcons.Images.Add("databased", My.Resources.folder_darkergray)
         ilIcons.Images.Add("databasen", My.Resources.database_green)
 
+
+        sMorph.MasterAlpha = 1000
+        sMorph.SetString("Wazzap !", Color.Lime)
+
+    End Sub
+
+    Public Sub SetErrState(nErrState As Boolean)
+        bErrState = nErrState
+        If bErrState Then
+            ErrStateAlpha.Setup(1000)
+        Else
+            ErrStateAlpha.Setup(0)
+        End If
     End Sub
 
     Public Sub Update()
+        If bErrState Then
+            If ErrStateAlpha.GetCurrent = 1000 Then
+                ErrStateAlpha.Setup(200)
+            ElseIf ErrStateAlpha.GetCurrent = 200 Then
+                ErrStateAlpha.Setup(1000)
+            End If
+        Else
+            ErrStateAlpha.Setup(0)
+        End If
+        ErrStateAlpha.Update()
+
 
         If Not lRgn = Rgn Or Not pLastCam = pCam Then
             Reloc(New Point(pCam.X + 8, pCam.Y + 8))
@@ -55,6 +84,7 @@
         End If
 
         UpdNodes()
+        sMorph.Update()
     End Sub
 
     Public Sub UpdNodes(Optional AtNode As TreeMenuItem = Nothing)
@@ -80,6 +110,21 @@
             G.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
             G.TextRenderingHint = Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit
             If Rdy Then RenderR(G)
+
+
+            If ErrStateAlpha.GetCurrent > 0 Then
+                Dim rgnBox As New Rectangle(Rgn.X + 16, Rgn.Y + Rgn.Height - 24, 24, 24)
+                Using sb As New SolidBrush(Color.FromArgb((155 / 1000) * ErrStateAlpha.GetCurrent, 255, 0, 0))
+                    Using pn As New Pen(Color.FromArgb((255 / 1000) * ErrStateAlpha.GetCurrent, 255, 0, 0), 1)
+                        G.FillRectangle(sb, rgnBox)
+                        G.DrawRectangle(pn, rgnBox)
+                        G.DrawImage(My.Resources._error, New Rectangle(rgnBox.X + 4, rgnBox.Y + 4, 16, 16))
+                    End Using
+                End Using
+            End If
+
+            sMorph.Render(G, sysfnt, Rgn, StringAlignment.Center, StringAlignment.Center, False)
+
         Catch ex As Exception
             Console.WriteLine(ex.ToString)
         End Try

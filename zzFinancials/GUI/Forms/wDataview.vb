@@ -3,7 +3,9 @@
     Private QueryInfo As String = "Search..."
     Private WithEvents TreeMenu As TreeMenu
     Private CMover As New ControlMover
+
     Private MemGraph As New GraphEx
+    Public CustGraph As New GraphEx
 
     Private QRInf_Amount As String = "Type an Amount"
     Private QRUsr_Amount As String
@@ -30,6 +32,7 @@
 
         CMover.AddControl(pnlView, "Viewer")
         CMover.AddControl(pnlGraph, "Graph")
+        CMover.AddControl(pnlGraphCust, "CustGraph")
         CMover.AddControl(pnlLogbook, "Logbooks")
         CMover.AddControl(pnlQReg, "QuickReg")
         'CMover.AddControl(PictureboxEx2, "Menu")
@@ -48,11 +51,16 @@
         txtDesc.Text = QRInf_Desc
         cbLabel.Text = QRInf_Label
 
+        txtLBName.Text = LBInf_Name
+        cbLBFolder.Text = LBInf_Folder
+
+        TreeMenu.SetErrState(True)
     End Sub
 
     Private Sub tUpdate_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tUpdate.Tick
         CMover.Update()
         MemGraph.Update()
+        CustGraph.Update()
 
         TreeMenu.Rgn = New Rectangle(PictureboxEx2.ClientRectangle.X, PictureboxEx2.ClientRectangle.Y, PictureboxEx2.ClientRectangle.Width - 16, PictureboxEx2.ClientRectangle.Height - 16)
         TreeMenu.Update()
@@ -60,9 +68,13 @@
         If Not tslStatus.Text = Kernell.DP.sStatus Then tslStatus.Text = Kernell.DP.sStatus
 
         MemGraph.SetView(pnlGraph.ClientRectangle)
+        CustGraph.SetView(pnlGraph.ClientRectangle)
+
         pnlView.Invalidate()
         pnlGraph.Invalidate()
+        pnlGraphCust.Invalidate()
         PictureboxEx2.Invalidate()
+
     End Sub
 
     Private Sub PictureboxEx1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pnlView.Click
@@ -151,6 +163,7 @@
     End Sub
 
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+        CMover.SwitchControl("QuickReg")
         Dim f As New frmQuickReg
         f.ShowDialog()
     End Sub
@@ -197,7 +210,7 @@
     End Sub
 
     Private Sub PictureboxEx2_Paint(sender As Object, e As PaintEventArgs) Handles PictureboxEx2.Paint
-        TreeMenu.RenderR(e.Graphics)
+        TreeMenu.Render(e.Graphics)
     End Sub
 
     Private Sub PictureboxEx2_Click(sender As Object, e As EventArgs) Handles PictureboxEx2.Click
@@ -224,7 +237,7 @@
         TreeMenu.Inf_Ms_Move(e.Location)
     End Sub
 
-    Private Sub GraphToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GraphToolStripMenuItem.Click
+    Private Sub GraphToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'CMover.SwitchControl("Logbooks")
         'Dim AppDiag As New AppDiag
         'AppDiag.Update()
@@ -257,10 +270,14 @@
             Case "tool:datagen"
                 Dim f As New fDevTools
                 f.Show()
+            Case "tool:TestGraphData"
+                Kernell.ResultsToGraph()
+                CMover.SwitchControl("CustGraph")
             Case Else
                 If Mid(Item.Tag, 1, 8) = "logbook:" Then
                     'Kernell.DM.PurgeData()
                     'Kernell.DP.PurgeData()
+                    CMover.SwitchControl("Viewer")
 
                     Kernell.DM.Dispose()
                     Kernell.DM = Nothing
@@ -270,6 +287,7 @@
 
                     Kernell.DM.TryParse(AppKernell.DM_Header)
                     Kernell.DM.FromFile(Mid(Item.Tag, 9, Item.Tag.Length - 8))
+                    Kernell.ActiveLogbook = Mid(Item.Tag, 9, Item.Tag.Length - 8)
 
                     '  MsgBox("Open logbook")
                 End If
@@ -297,6 +315,11 @@
         End If
 
         gID += 1
+
+
+
+        TreeMenu.sMorph.SetString(RndName(10, 20), Color.FromArgb(Rnd.Next(0, 255), Rnd.Next(0, 255), Rnd.Next(0, 255)))
+
     End Sub
 
     Private Sub txtAmount_GotFocus(sender As Object, e As EventArgs) Handles txtAmount.GotFocus
@@ -350,5 +373,89 @@
         If cbLabel.Text = "" Then
             cbLabel.Text = QRInf_Label
         End If
+    End Sub
+
+    Private Sub pnlGraphCust_Click(sender As Object, e As EventArgs) Handles pnlGraphCust.Click
+
+    End Sub
+
+    Private Sub pnlGraphCust_Paint(sender As Object, e As PaintEventArgs) Handles pnlGraphCust.Paint
+        CustGraph.Render(e.Graphics)
+    End Sub
+
+    Private Sub pnlGraphCust_Resize(sender As Object, e As EventArgs) Handles pnlGraphCust.Resize
+
+    End Sub
+
+    Private Sub bCreate_Click(sender As Object, e As EventArgs) Handles bCreate.Click
+
+
+        Try
+            Console.WriteLine("Creating logbook...")
+            Kernell.DM.TryParse(AppKernell.DM_Header)
+            Kernell.DM.ToFile(Kernell.pthBase & txtLBName.Text & ".lbk")
+            Kernell.ActiveLogbook = Kernell.pthBase & txtLBName.Text & ".lbk"
+
+            txtLBName.Text = LBInf_Name
+            cbLBFolder.Text = LBInf_Folder
+
+            TreeMenu = New TreeMenu("zzFinancials")
+            TreeMenu.TryParse(Kernell.Rebuild_LocalTree())
+
+            Console.WriteLine("Done.")
+            CMover.SwitchControl("Viewer")
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString)
+        End Try
+
+
+
+    End Sub
+
+    Private Sub txtLBName_GotFocus(sender As Object, e As EventArgs) Handles txtLBName.GotFocus
+        If txtLBName.Text = LBInf_Name Then
+            txtLBName.Text = LBUsr_Name
+        End If
+    End Sub
+
+    Private Sub txtLBName_LostFocus(sender As Object, e As EventArgs) Handles txtLBName.LostFocus
+        If txtLBName.Text <> LBInf_Name Then
+            LBUsr_Name = txtLBName.Text
+        End If
+        If txtLBName.Text = "" Then
+            txtLBName.Text = LBInf_Name
+        End If
+    End Sub
+
+    Private Sub txtLBName_TextChanged(sender As Object, e As EventArgs) Handles txtLBName.TextChanged
+
+    End Sub
+
+    Private Sub cbLBFolder_GotFocus(sender As Object, e As EventArgs) Handles cbLBFolder.GotFocus
+        If cbLBFolder.Text = LBInf_Folder Then
+            cbLBFolder.Text = LBUsr_Folder
+        End If
+    End Sub
+
+    Private Sub cbLBFolder_LostFocus(sender As Object, e As EventArgs) Handles cbLBFolder.LostFocus
+        If cbLBFolder.Text <> LBInf_Folder Then
+            LBUsr_Folder = cbLBFolder.Text
+        End If
+        If cbLBFolder.Text = "" Then
+            cbLBFolder.Text = LBInf_Folder
+        End If
+    End Sub
+
+    Private Sub cbLBFolder_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLBFolder.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' "created|datetime|mutationdate|date|amount|currency|description|text|label|text"
+        Kernell.DM.TryParse(Now.ToShortDateString & " " & Now.ToShortTimeString & "|" & txtTimeDate.Text & "|" & txtAmount.Text & "|" & txtDesc.Text & "|" & cbLabel.Text)
+        Console.WriteLine("Created entry.")
+        Kernell.DM.ToFile(Kernell.ActiveLogbook)
+        Kernell.DP.PostQuery()
+        CMover.SwitchControl("Viewer")
     End Sub
 End Class

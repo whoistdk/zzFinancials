@@ -88,6 +88,7 @@
     <Compile Include="Dev\guiHyperLogo.vb" />
     <Compile Include="Dev\guiMsgQue.vb" />
     <Compile Include="GUI\Comps\guiAniDB.vb" />
+    <Compile Include="GUI\Comps\InfoBox.vb" />
     <Compile Include="GUI\Comps\PictureboxEx.Designer.vb">
       <DependentUpon>PictureboxEx.vb</DependentUpon>
     </Compile>
@@ -203,6 +204,7 @@
   <ItemGroup>
     <Content Include="Dev\Design.txt" />
     <Content Include="Dev\TextFile1.txt" />
+    <None Include="Resources\error.png" />
     <None Include="Resources\cd_darker.png" />
     <None Include="Resources\cd_gray.png" />
     <None Include="Resources\cd_dark.png" />

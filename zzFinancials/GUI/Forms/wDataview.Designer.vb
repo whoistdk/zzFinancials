@@ -26,27 +26,16 @@ Partial Class wDataview
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(wDataview))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.ToCSVCommaSeperatedValueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToXMLExtendedMarkupLanguageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToWebpageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToTextfileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.CustomizeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.DetailedOverviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GraphToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tslStatus = New System.Windows.Forms.ToolStripLabel()
         Me.tUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.pnlLogbook = New System.Windows.Forms.Panel()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cbLBFolder = New System.Windows.Forms.ComboBox()
         Me.bCreate = New System.Windows.Forms.Button()
         Me.bCancel = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtLBName = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -62,12 +51,14 @@ Partial Class wDataview
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.tFeed = New System.Windows.Forms.Timer(Me.components)
+        Me.pnlGraphCust = New zzFinancials.PictureboxEx(Me.components)
         Me.pnlGraph = New zzFinancials.PictureboxEx(Me.components)
         Me.pnlView = New zzFinancials.PictureboxEx(Me.components)
         Me.PictureboxEx2 = New zzFinancials.PictureboxEx(Me.components)
         Me.ToolStrip1.SuspendLayout()
         Me.pnlLogbook.SuspendLayout()
         Me.pnlQReg.SuspendLayout()
+        CType(Me.pnlGraphCust, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlGraph, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pnlView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureboxEx2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +66,7 @@ Partial Class wDataview
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton2, Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripTextBox1, Me.ToolStripDropDownButton3, Me.tslStatus})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3, Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripTextBox1, Me.tslStatus})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(906, 25)
@@ -90,68 +81,6 @@ Partial Class wDataview
         Me.ToolStripButton3.Name = "ToolStripButton3"
         Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton3.Text = "Quick Register"
-        '
-        'ToolStripDropDownButton1
-        '
-        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToCSVCommaSeperatedValueToolStripMenuItem, Me.ToXMLExtendedMarkupLanguageToolStripMenuItem, Me.ToWebpageToolStripMenuItem, Me.ToTextfileToolStripMenuItem})
-        Me.ToolStripDropDownButton1.ForeColor = System.Drawing.Color.Silver
-        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(53, 22)
-        Me.ToolStripDropDownButton1.Text = "Export"
-        '
-        'ToCSVCommaSeperatedValueToolStripMenuItem
-        '
-        Me.ToCSVCommaSeperatedValueToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.ToCSVCommaSeperatedValueToolStripMenuItem.Name = "ToCSVCommaSeperatedValueToolStripMenuItem"
-        Me.ToCSVCommaSeperatedValueToolStripMenuItem.Size = New System.Drawing.Size(264, 22)
-        Me.ToCSVCommaSeperatedValueToolStripMenuItem.Text = "To CSV (Comma Seperated Value)"
-        '
-        'ToXMLExtendedMarkupLanguageToolStripMenuItem
-        '
-        Me.ToXMLExtendedMarkupLanguageToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.ToXMLExtendedMarkupLanguageToolStripMenuItem.Name = "ToXMLExtendedMarkupLanguageToolStripMenuItem"
-        Me.ToXMLExtendedMarkupLanguageToolStripMenuItem.Size = New System.Drawing.Size(264, 22)
-        Me.ToXMLExtendedMarkupLanguageToolStripMenuItem.Text = "To XML (Extended Markup Language)"
-        '
-        'ToWebpageToolStripMenuItem
-        '
-        Me.ToWebpageToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.ToWebpageToolStripMenuItem.Name = "ToWebpageToolStripMenuItem"
-        Me.ToWebpageToolStripMenuItem.Size = New System.Drawing.Size(264, 22)
-        Me.ToWebpageToolStripMenuItem.Text = "To Webpage"
-        '
-        'ToTextfileToolStripMenuItem
-        '
-        Me.ToTextfileToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.ToTextfileToolStripMenuItem.Name = "ToTextfileToolStripMenuItem"
-        Me.ToTextfileToolStripMenuItem.Size = New System.Drawing.Size(264, 22)
-        Me.ToTextfileToolStripMenuItem.Text = "To Textfile"
-        '
-        'ToolStripDropDownButton2
-        '
-        Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.ToolStripMenuItem1})
-        Me.ToolStripDropDownButton2.ForeColor = System.Drawing.Color.Silver
-        Me.ToolStripDropDownButton2.Image = CType(resources.GetObject("ToolStripDropDownButton2.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton2.Name = "ToolStripDropDownButton2"
-        Me.ToolStripDropDownButton2.Size = New System.Drawing.Size(51, 22)
-        Me.ToolStripDropDownButton2.Text = "Filters"
-        '
-        'CustomizeToolStripMenuItem
-        '
-        Me.CustomizeToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.CustomizeToolStripMenuItem.Text = "Customize Filter"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(153, 6)
         '
         'ToolStripButton1
         '
@@ -183,31 +112,6 @@ Partial Class wDataview
         Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 25)
         Me.ToolStripTextBox1.Text = "Search..."
         '
-        'ToolStripDropDownButton3
-        '
-        Me.ToolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedOverviewToolStripMenuItem, Me.GraphToolStripMenuItem})
-        Me.ToolStripDropDownButton3.ForeColor = System.Drawing.Color.Silver
-        Me.ToolStripDropDownButton3.Image = CType(resources.GetObject("ToolStripDropDownButton3.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton3.Name = "ToolStripDropDownButton3"
-        Me.ToolStripDropDownButton3.Size = New System.Drawing.Size(45, 22)
-        Me.ToolStripDropDownButton3.Text = "View"
-        '
-        'DetailedOverviewToolStripMenuItem
-        '
-        Me.DetailedOverviewToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.DetailedOverviewToolStripMenuItem.Name = "DetailedOverviewToolStripMenuItem"
-        Me.DetailedOverviewToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
-        Me.DetailedOverviewToolStripMenuItem.Text = "Detailed Overview"
-        '
-        'GraphToolStripMenuItem
-        '
-        Me.GraphToolStripMenuItem.ForeColor = System.Drawing.Color.Silver
-        Me.GraphToolStripMenuItem.Name = "GraphToolStripMenuItem"
-        Me.GraphToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
-        Me.GraphToolStripMenuItem.Text = "Graph"
-        '
         'tslStatus
         '
         Me.tslStatus.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
@@ -224,10 +128,10 @@ Partial Class wDataview
         '
         'pnlLogbook
         '
-        Me.pnlLogbook.Controls.Add(Me.ComboBox1)
+        Me.pnlLogbook.Controls.Add(Me.cbLBFolder)
         Me.pnlLogbook.Controls.Add(Me.bCreate)
         Me.pnlLogbook.Controls.Add(Me.bCancel)
-        Me.pnlLogbook.Controls.Add(Me.TextBox1)
+        Me.pnlLogbook.Controls.Add(Me.txtLBName)
         Me.pnlLogbook.Controls.Add(Me.Label3)
         Me.pnlLogbook.Controls.Add(Me.Label2)
         Me.pnlLogbook.Controls.Add(Me.Label1)
@@ -237,16 +141,16 @@ Partial Class wDataview
         Me.pnlLogbook.Size = New System.Drawing.Size(283, 174)
         Me.pnlLogbook.TabIndex = 4
         '
-        'ComboBox1
+        'cbLBFolder
         '
-        Me.ComboBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(86, 85)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(136, 21)
-        Me.ComboBox1.TabIndex = 9
+        Me.cbLBFolder.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.cbLBFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbLBFolder.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.cbLBFolder.FormattingEnabled = True
+        Me.cbLBFolder.Location = New System.Drawing.Point(86, 85)
+        Me.cbLBFolder.Name = "cbLBFolder"
+        Me.cbLBFolder.Size = New System.Drawing.Size(181, 21)
+        Me.cbLBFolder.TabIndex = 9
         '
         'bCreate
         '
@@ -256,7 +160,7 @@ Partial Class wDataview
         Me.bCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bCreate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.bCreate.Image = CType(resources.GetObject("bCreate.Image"), System.Drawing.Image)
-        Me.bCreate.Location = New System.Drawing.Point(162, 121)
+        Me.bCreate.Location = New System.Drawing.Point(191, 124)
         Me.bCreate.Name = "bCreate"
         Me.bCreate.Size = New System.Drawing.Size(29, 29)
         Me.bCreate.TabIndex = 7
@@ -270,20 +174,20 @@ Partial Class wDataview
         Me.bCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.bCancel.Image = CType(resources.GetObject("bCancel.Image"), System.Drawing.Image)
-        Me.bCancel.Location = New System.Drawing.Point(127, 121)
+        Me.bCancel.Location = New System.Drawing.Point(156, 124)
         Me.bCancel.Name = "bCancel"
         Me.bCancel.Size = New System.Drawing.Size(29, 29)
         Me.bCancel.TabIndex = 8
         Me.bCancel.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtLBName
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(86, 52)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(136, 20)
-        Me.TextBox1.TabIndex = 3
+        Me.txtLBName.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.txtLBName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.txtLBName.Location = New System.Drawing.Point(86, 52)
+        Me.txtLBName.Name = "txtLBName"
+        Me.txtLBName.Size = New System.Drawing.Size(181, 20)
+        Me.txtLBName.TabIndex = 3
         '
         'Label3
         '
@@ -401,7 +305,7 @@ Partial Class wDataview
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(144, 196)
+        Me.Button1.Location = New System.Drawing.Point(189, 196)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(29, 29)
         Me.Button1.TabIndex = 7
@@ -415,7 +319,7 @@ Partial Class wDataview
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(109, 196)
+        Me.Button2.Location = New System.Drawing.Point(154, 196)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(29, 29)
         Me.Button2.TabIndex = 8
@@ -454,12 +358,21 @@ Partial Class wDataview
         '
         Me.tFeed.Enabled = True
         '
+        'pnlGraphCust
+        '
+        Me.pnlGraphCust.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.pnlGraphCust.Location = New System.Drawing.Point(209, 394)
+        Me.pnlGraphCust.Name = "pnlGraphCust"
+        Me.pnlGraphCust.Size = New System.Drawing.Size(283, 45)
+        Me.pnlGraphCust.TabIndex = 7
+        Me.pnlGraphCust.TabStop = False
+        '
         'pnlGraph
         '
         Me.pnlGraph.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.pnlGraph.Location = New System.Drawing.Point(209, 343)
         Me.pnlGraph.Name = "pnlGraph"
-        Me.pnlGraph.Size = New System.Drawing.Size(283, 100)
+        Me.pnlGraph.Size = New System.Drawing.Size(283, 45)
         Me.pnlGraph.TabIndex = 6
         Me.pnlGraph.TabStop = False
         '
@@ -488,6 +401,7 @@ Partial Class wDataview
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(906, 476)
+        Me.Controls.Add(Me.pnlGraphCust)
         Me.Controls.Add(Me.pnlGraph)
         Me.Controls.Add(Me.pnlQReg)
         Me.Controls.Add(Me.pnlLogbook)
@@ -504,6 +418,7 @@ Partial Class wDataview
         Me.pnlLogbook.PerformLayout()
         Me.pnlQReg.ResumeLayout(False)
         Me.pnlQReg.PerformLayout()
+        CType(Me.pnlGraphCust, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlGraph, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pnlView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureboxEx2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -512,26 +427,15 @@ Partial Class wDataview
 
     End Sub
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripDropDownButton1 As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents ToCSVCommaSeperatedValueToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToXMLExtendedMarkupLanguageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToWebpageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToTextfileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripDropDownButton2 As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents CustomizeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripTextBox1 As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents pnlView As zzFinancials.PictureboxEx
     Friend WithEvents tUpdate As System.Windows.Forms.Timer
-    Friend WithEvents ToolStripDropDownButton3 As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents DetailedOverviewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents GraphToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
     Friend WithEvents PictureboxEx2 As zzFinancials.PictureboxEx
     Friend WithEvents pnlLogbook As System.Windows.Forms.Panel
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtLBName As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -543,7 +447,7 @@ Partial Class wDataview
     Friend WithEvents txtDesc As System.Windows.Forms.TextBox
     Friend WithEvents txtAmount As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cbLBFolder As System.Windows.Forms.ComboBox
     Friend WithEvents pnlGraph As zzFinancials.PictureboxEx
     Friend WithEvents tslStatus As System.Windows.Forms.ToolStripLabel
     Friend WithEvents tFeed As System.Windows.Forms.Timer
@@ -552,4 +456,5 @@ Partial Class wDataview
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents txtTimeDate As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents pnlGraphCust As zzFinancials.PictureboxEx
 End Class

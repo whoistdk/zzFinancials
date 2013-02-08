@@ -35,6 +35,10 @@ zzFinancials
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:zzFinancials.My.Resources.Resources._error">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:zzFinancials.My.Resources.Resources.BarBG">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

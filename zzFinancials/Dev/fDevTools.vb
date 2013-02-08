@@ -21,18 +21,5 @@
         Return Now.Day & "/" & Now.Month & "/" & Now.Year
     End Function
 
-    Private cData() As String = {"a", "b", "c", "d", "e", "f", "g", _
-                                 "h", "i", "j", "k", "l", "m", "n", "o", "p", _
-                                 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "}
-
-    Public Function RndName(ByVal MinSize As Integer, ByVal MaxSize As Integer) As String
-        Dim nxLen As Integer = MinSize + (rnd.Next(1, MaxSize - MinSize))
-        Dim sb As New System.Text.StringBuilder
-        For c = 1 To nxLen
-            sb.Append(cData(rnd.Next(0, UBound(cData))))
-        Next
-        Return sb.ToString
-    End Function
-
 
 End Class

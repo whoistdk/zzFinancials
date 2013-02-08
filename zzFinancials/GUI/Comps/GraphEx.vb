@@ -185,8 +185,8 @@
                     .Pos.Setup(Nodes(Nodes.Count - 1).Pos.GetCurrentF, Nodes(Nodes.Count - 1).Pos.GetCurrentF, 1 / 32, 1 / 32, 1.0)
                     .R = Nodes(Nodes.Count - 1)
 
-                Else
-                    .Pos.Setup(Point.Empty, Point.Empty, 1 / 32, 1 / 32, 1.0)
+                    'Else
+                    '    .Pos.Setup(Point.Empty, Point.Empty, 1 / 2, 1 / 2, 1.0)
                 End If
             End With
             Nodes.Add(nwN)
@@ -205,9 +205,9 @@
             For Each N As GraphEx_DataNode In Nodes
                 If N.R IsNot Nothing Then Draw_Relation(G, N, ClrRelation)
             Next
-            For Each N As GraphEx_DataNode In Nodes
-                Draw_Node(G, N, ClrNode)
-            Next
+            'For Each N As GraphEx_DataNode In Nodes
+            '    Draw_Node(G, N, ClrNode)
+            'Next
 
             'DrawText(G, "Time Elapsed per 100 miliseconds", sysfnt, Brushes.Silver, StringAlignment.Far, StringAlignment.Center, New Rectangle(RgnGraph.X + RgnGraph.Width - 1000, RgnGraph.Y + RgnGraph.Height, 1000, 16))
             'DrawText(G, "Memory Usage in Megabytes (Max: " & V.Max & ")", sysfnt, Brushes.Silver, StringAlignment.Near, StringAlignment.Center, New Rectangle(RgnGraph.X, RgnGraph.Y - 16, 1000, 16))
@@ -285,4 +285,8 @@ Public Class GraphEx_DataNode
     Public V As New GraphEx_NodeAxis
     Public Pos As New zzDynamix.CoreClasses.dynPoint
     Public R As GraphEx_DataNode = Nothing 'Relative
+
+    Public Sub New()
+        Pos.Setup(Point.Empty, Point.Empty, 1 / 2, 1 / 2, 1)
+    End Sub
 End Class

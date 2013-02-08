@@ -4,8 +4,16 @@ The purpose of this project is to create an easy to use (budget) registration sy
 with powerfull options for filtering and displaying transactions, managing and future planning.
 
 
-------Features------
+------ChangeLog------
+* Fixed dialog functionality of Create new Logbook.
+* Fixed dialog functionality of Quick Register.
+* Created dynamic text component: StringMorpher.
+* Updated DrawText, Fixed shadow's alpha.
+* Added several menu commands.
+* Added Graphing financial data Beta under devtools. 
+* Added same DB core for logging
 
+------Features------
 * Custom flexible threaded database engine with search, filter and sort query functions.
 * Custom rendered overview capable of handling a milion+ items per logbook at fast speeds.
 * System for drawing custom rendered graphs of various types of data.
@@ -19,21 +27,19 @@ with powerfull options for filtering and displaying transactions, managing and f
       TWG Retina Icons Pack.
       
 ------Idea's------
-
 * A system for planning financial transactions
 * Multiple types of data, e.g. Instead of Amount for currency, Amount will represent KiloGrams.
   But also multiple fields like e.g. <Amount (Product Weight) in Grams>,<Amount (Price?) in Euro>
 
 ------Todo------ 
-
 #Building:
 * New Logbook Dialog, Label management Dialog.
 * New Filter Dialog.
-* Graphing financial data. 
 * Ehanced error management and logging system.
 * Keep in SystemTray functionality. 
 * Start with windows functionality. 
 * Security functionality. (Encryption/Accounts/Passwords)
+* Update Graphing financial data. 
 
 #Updating:
 * GraphEx -> Cleaner Graph buildup, vertical axis text to vertical, info at cursor.
@@ -44,16 +50,15 @@ with powerfull options for filtering and displaying transactions, managing and f
 * Deeper resouce debugging (Mem/CPU).
 * Columns resize on reordering.
 * Scrolwheel failt due to control focus.
+* more then 10 mil items crashes on data generation.
 
 ------Disclaimer------ 
-
 * Project name may change on any time.
 * I am not responsible for any damage or prosparity this program may cause to your computer.
 * I am not responsible for any damage or prosparity this program may cause to your self.
 * Please copy and use and study any code available, but credit where credit is due.
 
 ------Greetings------ 
-
 To all I know and might know in the future ;)
 
                Greetz TDK
